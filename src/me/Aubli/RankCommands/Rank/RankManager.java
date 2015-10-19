@@ -49,4 +49,8 @@ public class RankManager {
 	return instance;
     }
     
+    public static void reloadRanks() {
+	ranks.clear();
+	getManager().loadContent();
+    }
 }

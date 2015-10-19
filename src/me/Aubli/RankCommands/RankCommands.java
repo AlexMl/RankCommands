@@ -2,6 +2,7 @@ package me.Aubli.RankCommands;
 
 import java.util.logging.Level;
 
+import me.Aubli.RankCommands.Rank.RankManager;
 import me.Aubli.Util.Logger.PluginOutput;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -49,6 +50,12 @@ public class RankCommands extends JavaPlugin {
 	
 	getConfig().options().copyDefaults(true);
 	saveConfig();
+    }
+    
+    public void reloadPluginConfig() {
+	reloadConfig();
+	loadPluginConfig();
+	RankManager.reloadRanks();
     }
     
 }
