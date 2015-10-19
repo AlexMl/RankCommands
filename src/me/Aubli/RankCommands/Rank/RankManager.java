@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import me.Aubli.RankCommands.RankCommands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -84,7 +85,7 @@ public class RankManager {
 	}
 	
 	for (String command : rank.getCommandList()) {
-	    RankCommands.getInstance().getServer().dispatchCommand(null, command.replace("<player>", player.getName()));
+	    RankCommands.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()));
 	}
 	
     }
