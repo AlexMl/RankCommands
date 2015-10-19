@@ -21,4 +21,9 @@ public class Rank {
     public List<String> getCommandList() {
 	return this.commandList;
     }
+    
+    @Override
+    public String toString() {
+	return getClass().getSimpleName() + "[" + getName() + ": " + getCommandList().toString() + "]";
+    }
 }
