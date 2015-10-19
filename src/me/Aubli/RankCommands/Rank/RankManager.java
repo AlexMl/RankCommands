@@ -9,6 +9,7 @@ import me.Aubli.RankCommands.RankCommands;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 
 public class RankManager {
@@ -55,5 +56,28 @@ public class RankManager {
     public static void reloadRanks() {
 	ranks.clear();
 	getManager().loadContent();
+    }
+    
+    public static Rank getRank(String name) {
+	for (Rank rank : ranks) {
+	    // TODO ask if rank name is case sensitive
+	    if (rank.getName().equals(name)) {
+		return rank;
+	    }
+	}
+	return null;
+    }
+    
+    public static void execute(Rank rank, Player player) {
+	
+	if (rank == null || player == null) {
+	    // TODO maybe throw exception
+	    return;
+	}
+	
+	for (String command : rank.getCommandList()) {
+	    RankCommands.getInstance().getServer().dispatchCommand(null, command.replace("<player>", player.getName()));
+	}
+	
     }
 }
