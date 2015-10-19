@@ -33,7 +33,10 @@ public class RankManager {
 	    try {
 		rankFile.createNewFile();
 		
-		fileConfig.set("ranks", null);
+		fileConfig.options().header(""); // TODO add header
+		fileConfig.set("ranks", "");
+		
+		fileConfig.options().copyHeader();
 		fileConfig.save(rankFile);
 	    } catch (IOException e) {
 		e.printStackTrace(); // TODO logger
