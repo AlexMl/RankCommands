@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import me.Aubli.RankCommands.RankCommands;
 
@@ -45,8 +46,15 @@ public class RankManager {
 	    return;
 	}
 	
-	// TODO load actuall content
-	
+	if (fileConfig.get("ranks") != null) {
+	    
+	    for (Entry<String, Object> entry : fileConfig.getConfigurationSection("ranks").getValues(false).entrySet()) {
+		Rank rank = new Rank(entry.getKey(), fileConfig.getStringList("ranks." + entry.getKey() + ".commands"));
+		System.out.println(rank.toString());
+		ranks.add(rank);
+	    }
+	    
+	}
     }
     
     private static RankManager getManager() {
