@@ -29,6 +29,9 @@ public class RankCommands extends JavaPlugin {
 	
 	logger = new PluginOutput(getInstance(), this.debugMode, this.logLevel);
 	
+	new RankManager();
+	getCommand("rank").setExecutor(new CommandExecuter());
+	
 	logger.log(getClass(), "Plugin enabled!", false);
     }
     

@@ -4,3 +4,8 @@ author: Aubli
 version: 0.0.1
 
 main: me.Aubli.RankCommands.RankCommands
+
+commands:
+    rank:
+        description: rank command
+        usage: /<command> <player> <rank>
