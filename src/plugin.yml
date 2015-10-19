@@ -1,0 +1,6 @@
+name: RankedCommands
+description: Rank based commands
+author: Aubli
+version: 0.0.1
+
+main: me.Aubli.RankCommands.RankCommands
