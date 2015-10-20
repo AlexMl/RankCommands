@@ -17,9 +17,10 @@ public class CommandExecuter implements CommandExecutor {
     @Override
     @SuppressWarnings("deprecation")
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	// TODO permission checks
 	
 	if (cmd.getName().equalsIgnoreCase("rank")) {
-	    // TODO permission check
+	    
 	    if (args.length == 2) {
 		Player argPlayer = Bukkit.getPlayer(args[0]);
 		
@@ -36,7 +37,19 @@ public class CommandExecuter implements CommandExecutor {
 		    // TODO message
 		}
 	    }
+	}
+	
+	if (cmd.getName().equalsIgnoreCase("vanti")) {
 	    
+	    if (args.length == 1) {
+		if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
+		    VantiUtilities.getInstance().reloadPluginConfig();
+		    sender.sendMessage(RankMessage.config_reloaded.getMessage());
+		    return true;
+		}
+	    }
+	    
+	    return true;
 	}
 	
 	return false;

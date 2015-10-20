@@ -9,3 +9,6 @@ commands:
     rank:
         description: rank command
         usage: /<command> <player> <rank>
+    vanti:
+        description: plugin commands
+        usage: /<command>

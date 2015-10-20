@@ -13,7 +13,8 @@ public class RankMessages {
     
     public enum RankMessage {
 	
-	rank_changed("Your rank changed to %s!"), ;
+	rank_changed("Your rank changed to %s!"),
+	config_reloaded("Reloaded the plugin configuration!");
 	
 	private String message;
 	
