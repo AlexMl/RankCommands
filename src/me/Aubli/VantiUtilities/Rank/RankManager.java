@@ -37,8 +37,8 @@ public class RankManager {
 	    try {
 		rankFile.createNewFile();
 		
-		fileConfig.options().header(""); // TODO add header
-		fileConfig.set("ranks", "");
+		fileConfig.options().header("This is the rank configuration of " + VantiUtilities.getInstance().getName() + "!\nUse '<player>' for addressing the player\nAvailable options are 'commands:' and 'message:'\nCommands have to be in list format!\n");
+		fileConfig.set("ranks", "[]");
 		
 		fileConfig.options().copyHeader();
 		fileConfig.save(rankFile);
