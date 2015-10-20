@@ -29,6 +29,7 @@ public class CommandExecuter implements CommandExecutor {
 		    RankManager.execute(rank, argPlayer);
 		    
 		    System.out.println(argPlayer.getName() + " changed rank to " + rank);
+		    argPlayer.sendMessage(rank.getMessage());
 		    RankMessages.sendMessage(argPlayer, RankMessage.rank_changed, rank.getName());
 		    return true;
 		} else {

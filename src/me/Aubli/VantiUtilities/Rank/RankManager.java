@@ -50,7 +50,7 @@ public class RankManager {
 	if (fileConfig.get("ranks") != null) {
 	    
 	    for (Entry<String, Object> entry : fileConfig.getConfigurationSection("ranks").getValues(false).entrySet()) {
-		Rank rank = new Rank(entry.getKey(), fileConfig.getStringList("ranks." + entry.getKey() + ".commands"));
+		Rank rank = new Rank(entry.getKey(), fileConfig.getStringList("ranks." + entry.getKey() + ".commands"), fileConfig.getString("ranks." + entry.getKey() + ".message"));
 		System.out.println(rank.toString());
 		ranks.add(rank);
 	    }

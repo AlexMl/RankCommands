@@ -6,12 +6,13 @@ import java.util.List;
 public class Rank {
     
     private String name;
-    
     private List<String> commandList;
+    private String message;
     
-    public Rank(String name, List<String> commandList) {
+    public Rank(String name, List<String> commandList, String promotionMessage) {
 	this.name = name;
 	this.commandList = commandList;
+	this.message = promotionMessage;
     }
     
     public String getName() {
@@ -20,6 +21,10 @@ public class Rank {
     
     public List<String> getCommandList() {
 	return this.commandList;
+    }
+    
+    public String getMessage() {
+	return this.message;
     }
     
     @Override
