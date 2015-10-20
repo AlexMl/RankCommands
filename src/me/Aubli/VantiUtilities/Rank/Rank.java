@@ -1,4 +1,4 @@
-package me.Aubli.RankCommands.Rank;
+package me.Aubli.VantiUtilities.Rank;
 
 import java.util.List;
 

@@ -1,16 +1,16 @@
-package me.Aubli.RankCommands;
+package me.Aubli.VantiUtilities;
 
 import java.util.logging.Level;
 
-import me.Aubli.RankCommands.Rank.RankManager;
 import me.Aubli.Util.Logger.PluginOutput;
+import me.Aubli.VantiUtilities.Rank.RankManager;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class RankCommands extends JavaPlugin {
+public class VantiUtilities extends JavaPlugin {
     
-    private static RankCommands instance;
+    private static VantiUtilities instance;
     private static PluginOutput logger;
     
     private boolean debugMode;
@@ -35,7 +35,7 @@ public class RankCommands extends JavaPlugin {
 	logger.log(getClass(), "Plugin enabled!", false);
     }
     
-    public static RankCommands getInstance() {
+    public static VantiUtilities getInstance() {
 	return instance;
     }
     

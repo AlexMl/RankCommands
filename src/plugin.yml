@@ -1,9 +1,9 @@
-name: RankedCommands
-description: Rank based commands
+name: VantiUtilities
+description: Utilities for Vanti Server
 author: Aubli
 version: 0.0.1
 
-main: me.Aubli.RankCommands.RankCommands
+main: me.Aubli.VantiUtilities.VantiUtilities
 
 commands:
     rank:

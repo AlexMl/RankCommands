@@ -1,4 +1,4 @@
-package me.Aubli.RankCommands.Rank;
+package me.Aubli.VantiUtilities.Rank;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import me.Aubli.RankCommands.RankCommands;
+import me.Aubli.VantiUtilities.VantiUtilities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,7 +24,7 @@ public class RankManager {
     
     public RankManager() {
 	instance = this;
-	rankFile = new File(RankCommands.getInstance().getDataFolder(), "ranks.yml");
+	rankFile = new File(VantiUtilities.getInstance().getDataFolder(), "ranks.yml");
 	loadContent();
     }
     
@@ -85,7 +85,7 @@ public class RankManager {
 	}
 	
 	for (String command : rank.getCommandList()) {
-	    RankCommands.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()));
+	    VantiUtilities.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()));
 	}
 	
     }

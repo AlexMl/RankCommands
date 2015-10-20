@@ -1,9 +1,9 @@
-package me.Aubli.RankCommands;
+package me.Aubli.VantiUtilities;
 
-import me.Aubli.RankCommands.Rank.Rank;
-import me.Aubli.RankCommands.Rank.RankManager;
-import me.Aubli.RankCommands.Rank.RankMessages;
-import me.Aubli.RankCommands.Rank.RankMessages.RankMessage;
+import me.Aubli.VantiUtilities.Rank.Rank;
+import me.Aubli.VantiUtilities.Rank.RankManager;
+import me.Aubli.VantiUtilities.Rank.RankMessages;
+import me.Aubli.VantiUtilities.Rank.RankMessages.RankMessage;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
