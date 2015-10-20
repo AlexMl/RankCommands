@@ -69,8 +69,7 @@ public class RankManager {
     
     public static Rank getRank(String name) {
 	for (Rank rank : ranks) {
-	    // TODO ask if rank name is case sensitive
-	    if (rank.getName().equals(name)) {
+	    if (rank.getName().equalsIgnoreCase(name)) {
 		return rank;
 	    }
 	}
