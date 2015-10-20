@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 
 import me.Aubli.VantiUtilities.VantiUtilities;
 
@@ -77,7 +78,7 @@ public class RankManager {
     }
     
     public static void execute(Rank rank, Player player) throws NullPointerException {
-	// TODO log execution
+	
 	if (rank == null || player == null) {
 	    throw new NullPointerException("Rank and Player can not be null!");
 	}
@@ -86,5 +87,6 @@ public class RankManager {
 	    VantiUtilities.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()));
 	}
 	
+	VantiUtilities.getPluginLogger().log(RankManager.class, Level.INFO, "Player " + player.getName() + " got moved to " + rank.getName() + " successfully!", true, true);
     }
 }
