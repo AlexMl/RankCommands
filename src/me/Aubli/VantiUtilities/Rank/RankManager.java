@@ -76,11 +76,10 @@ public class RankManager {
 	return null;
     }
     
-    public static void execute(Rank rank, Player player) {
-	
+    public static void execute(Rank rank, Player player) throws NullPointerException {
+	// TODO log execution
 	if (rank == null || player == null) {
-	    // TODO maybe throw exception
-	    return;
+	    throw new NullPointerException("Rank and Player can not be null!");
 	}
 	
 	for (String command : rank.getCommandList()) {
