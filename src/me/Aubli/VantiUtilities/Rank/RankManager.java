@@ -43,7 +43,7 @@ public class RankManager {
 		fileConfig.options().copyHeader();
 		fileConfig.save(rankFile);
 	    } catch (IOException e) {
-		e.printStackTrace(); // TODO logger
+		VantiUtilities.getPluginLogger().log(getClass(), Level.WARNING, "Could not save rank file: " + e.getMessage(), true, false, e);
 	    }
 	    return;
 	}
