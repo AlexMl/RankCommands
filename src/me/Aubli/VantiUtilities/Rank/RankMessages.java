@@ -5,8 +5,13 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.UUID;
 
+import me.Aubli.VantiUtilities.VantiUtilities;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 
 public class RankMessages {
@@ -29,6 +34,10 @@ public class RankMessages {
 	public String getFormatedMessage(Object... args) {
 	    return String.format(getMessage(), args);
 	}
+    }
+    
+    public RankMessages() {
+	Bukkit.getPluginManager().registerEvents(new JoinListener(), VantiUtilities.getInstance());
     }
     
     public static void sendMessage(Player player, RankMessage message) {
@@ -65,6 +74,14 @@ public class RankMessages {
 	    }
 	    
 	    messageMap = queuedMessages;
+	}
+    }
+    
+    private class JoinListener implements Listener {
+	
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
+	    MessageDelivery.pushMessages();
 	}
     }
 }

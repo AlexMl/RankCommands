@@ -4,6 +4,7 @@ import java.util.logging.Level;
 
 import me.Aubli.Util.Logger.PluginOutput;
 import me.Aubli.VantiUtilities.Rank.RankManager;
+import me.Aubli.VantiUtilities.Rank.RankMessages;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,6 +31,7 @@ public class VantiUtilities extends JavaPlugin {
 	logger = new PluginOutput(getInstance(), this.debugMode, this.logLevel);
 	
 	new RankManager();
+	new RankMessages();
 	getCommand("rank").setExecutor(new CommandExecuter());
 	getCommand("vanti").setExecutor(new CommandExecuter());
 	
