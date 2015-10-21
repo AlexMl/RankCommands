@@ -21,20 +21,20 @@ public class CommandExecuter implements CommandExecutor {
 	if (cmd.getName().equalsIgnoreCase("rank")) {
 	    
 	    if (args.length == 2) {
-		if (sender.hasPermission("")) {// TODO permission
-		    OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
-		    Rank rank = RankManager.getRank(args[1]);
-		    
-		    if (rank != null) {
+		OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+		Rank rank = RankManager.getRank(args[1]);
+		
+		if (rank != null) {
+		    if (rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
 			RankManager.execute(rank, argPlayer);
 			RankMessages.sendMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
 			return true;
 		    } else {
-			RankMessages.sendMessage(sender, RankMessage.rank_not_found, args[1]);
+			RankMessages.sendMessage(sender, RankMessage.no_permission);
 			return true;
 		    }
 		} else {
-		    RankMessages.sendMessage(sender, RankMessage.no_permission);
+		    RankMessages.sendMessage(sender, RankMessage.rank_not_found, args[1]);
 		    return true;
 		}
 	    }

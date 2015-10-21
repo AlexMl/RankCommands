@@ -37,7 +37,7 @@ public class RankManager {
 	    try {
 		rankFile.createNewFile();
 		
-		fileConfig.options().header("This is the rank configuration of " + VantiUtilities.getInstance().getName() + "!\nUse '<player>' for addressing the player\nAvailable options are 'commands:' and 'message:'\nCommands have to be in list format!\n");
+		fileConfig.options().header("This is the rank configuration of " + VantiUtilities.getInstance().getName() + "!\nUse '<player>' for addressing the player\nAvailable options are:\n'permission:' Permission to execute /rank rankname player\n'commands:' the commands in list format\n'message:' the message send to the player who received the rank\n");
 		fileConfig.set("ranks", "[]");
 		
 		fileConfig.options().copyHeader();
@@ -51,7 +51,7 @@ public class RankManager {
 	if (fileConfig.get("ranks") != null) {
 	    
 	    for (Entry<String, Object> entry : fileConfig.getConfigurationSection("ranks").getValues(false).entrySet()) {
-		Rank rank = new Rank(entry.getKey(), fileConfig.getStringList("ranks." + entry.getKey() + ".commands"), fileConfig.getString("ranks." + entry.getKey() + ".message"));
+		Rank rank = new Rank(entry.getKey(), fileConfig.getString("ranks." + entry.getKey() + ".permission"), fileConfig.getStringList("ranks." + entry.getKey() + ".commands"), fileConfig.getString("ranks." + entry.getKey() + ".message"));
 		System.out.println(rank.toString());
 		ranks.add(rank);
 	    }
