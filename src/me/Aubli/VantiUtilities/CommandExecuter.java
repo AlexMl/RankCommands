@@ -6,10 +6,10 @@ import me.Aubli.VantiUtilities.Rank.RankMessages;
 import me.Aubli.VantiUtilities.Rank.RankMessages.RankMessage;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 
 public class CommandExecuter implements CommandExecutor {
@@ -22,21 +22,20 @@ public class CommandExecuter implements CommandExecutor {
 	if (cmd.getName().equalsIgnoreCase("rank")) {
 	    
 	    if (args.length == 2) {
-		Player argPlayer = Bukkit.getPlayer(args[0]);
 		
-		// TODO maybe handle offlineplayers as well
-		if (argPlayer != null && argPlayer.isOnline()) {
-		    Rank rank = RankManager.getRank(args[1]);
+		OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+		Rank rank = RankManager.getRank(args[1]);
+		
+		if (rank != null) {
 		    RankManager.execute(rank, argPlayer);
-		    
-		    System.out.println(argPlayer.getName() + " changed rank to " + rank);
-		    argPlayer.sendMessage(rank.getMessage());
-		    RankMessages.sendMessage(argPlayer, RankMessage.rank_changed, rank.getName());
+		    RankMessages.sendMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
 		    return true;
 		} else {
-		    // TODO message
+		    RankMessages.sendMessage(sender, RankMessage.rank_not_found, args[1]);
+		    return true;
 		}
 	    }
+	    return false;
 	}
 	
 	if (cmd.getName().equalsIgnoreCase("vanti")) {

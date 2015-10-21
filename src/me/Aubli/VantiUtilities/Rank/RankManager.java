@@ -10,9 +10,9 @@ import java.util.logging.Level;
 import me.Aubli.VantiUtilities.VantiUtilities;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 
 public class RankManager {
@@ -77,7 +77,7 @@ public class RankManager {
 	return null;
     }
     
-    public static void execute(Rank rank, Player player) throws NullPointerException {
+    public static void execute(Rank rank, OfflinePlayer player) throws NullPointerException {
 	
 	if (rank == null || player == null) {
 	    throw new NullPointerException("Rank and Player can not be null!");
@@ -87,6 +87,7 @@ public class RankManager {
 	    VantiUtilities.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()));
 	}
 	
+	RankMessages.sendMessage(player, rank.getMessage());
 	VantiUtilities.getPluginLogger().log(RankManager.class, Level.INFO, "Player " + player.getName() + " got moved to " + rank.getName() + " successfully!", true, true);
     }
 }

@@ -8,7 +8,8 @@ import java.util.UUID;
 import me.Aubli.VantiUtilities.VantiUtilities;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -18,7 +19,8 @@ public class RankMessages {
     
     public enum RankMessage {
 	
-	rank_changed("Your rank changed to %s!"),
+	rank_changed("You moved %s to rank %s!"),
+	rank_not_found("The rank %s is not available!"),
 	config_reloaded("Reloaded the plugin configuration!");
 	
 	private String message;
@@ -40,23 +42,35 @@ public class RankMessages {
 	Bukkit.getPluginManager().registerEvents(new JoinListener(), VantiUtilities.getInstance());
     }
     
-    public static void sendMessage(Player player, RankMessage message) {
+    public static void sendMessage(OfflinePlayer player, String message) {
+	MessageDelivery.sendMessage(player, message);
+    }
+    
+    public static void sendMessage(OfflinePlayer player, RankMessage message) {
 	MessageDelivery.sendMessage(player, message.getMessage());
     }
     
-    public static void sendMessage(Player player, RankMessage message, Object... args) {
+    public static void sendMessage(OfflinePlayer player, RankMessage message, Object... args) {
 	MessageDelivery.sendMessage(player, message.getFormatedMessage(args));
     }
     
-    public static void pushMessages() {
-	MessageDelivery.pushMessages();
+    public static void sendMessage(CommandSender sender, RankMessage message) {
+	MessageDelivery.sendMessage(sender, message.getMessage());
+    }
+    
+    public static void sendMessage(CommandSender sender, RankMessage message, Object... args) {
+	MessageDelivery.sendMessage(sender, message.getFormatedMessage(args));
     }
     
     private static class MessageDelivery {
 	
 	private static Map<UUID, String> messageMap = new TreeMap<UUID, String>();
 	
-	public static void sendMessage(Player player, String message) {
+	public static void sendMessage(CommandSender sender, String message) {
+	    sender.sendMessage(message);
+	}
+	
+	public static void sendMessage(OfflinePlayer player, String message) {
 	    messageMap.put(player.getUniqueId(), message);
 	    pushMessages();
 	}
