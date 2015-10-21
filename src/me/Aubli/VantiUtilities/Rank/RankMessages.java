@@ -21,7 +21,8 @@ public class RankMessages {
 	
 	rank_changed("You moved %s to rank %s!"),
 	rank_not_found("The rank %s is not available!"),
-	config_reloaded("Reloaded the plugin configuration!");
+	config_reloaded("Reloaded the plugin configuration!"),
+	no_permission("You do not have enough permission!");
 	
 	private String message;
 	
