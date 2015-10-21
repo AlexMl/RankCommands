@@ -35,6 +35,8 @@ public class VantiUtilities extends JavaPlugin {
 	getCommand("rank").setExecutor(new CommandExecuter());
 	getCommand("vanti").setExecutor(new CommandExecuter());
 	
+	getServer().getPluginManager().registerEvents(new PlayerListener(), this);
+	
 	logger.log(getClass(), "Plugin enabled!", false);
     }
     
