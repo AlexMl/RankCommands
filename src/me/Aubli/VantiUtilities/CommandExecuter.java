@@ -44,7 +44,7 @@ public class CommandExecuter implements CommandExecutor {
 	if (cmd.getName().equalsIgnoreCase("vanti")) {
 	    
 	    if (args.length == 1) {
-		if (sender.hasPermission("")) {// TODO permission
+		if (VantiPermission.hasPermission(sender, VantiPermission.config_reload)) {
 		    if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
 			VantiUtilities.getInstance().reloadPluginConfig();
 			RankMessages.sendMessage(sender, RankMessage.config_reloaded);;
