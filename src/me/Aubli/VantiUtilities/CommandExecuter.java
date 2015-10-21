@@ -25,7 +25,7 @@ public class CommandExecuter implements CommandExecutor {
 		Rank rank = RankManager.getRank(args[1]);
 		
 		if (rank != null) {
-		    if (rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
+		    if (rank.getRankPermission() == null || rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
 			RankManager.execute(rank, argPlayer);
 			RankMessages.sendMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
 			return true;
