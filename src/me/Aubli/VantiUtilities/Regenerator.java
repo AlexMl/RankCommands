@@ -40,11 +40,11 @@ public class Regenerator extends BukkitRunnable {
     @Override
     public void run() {
 	
-	System.out.println("Regeneration of " + this.type.name());
+	// System.out.println("Regeneration of " + this.type.name());
 	
 	switch (this.type) {
 	    case HEALTH:
-		System.out.println("H:" + this.player.getHealth());
+		// System.out.println("H:" + this.player.getHealth());
 		
 		if (this.player.getHealth() <= 0) {
 		    this.cancel();
@@ -59,7 +59,7 @@ public class Regenerator extends BukkitRunnable {
 		break;
 	    
 	    case FOOD:
-		System.out.println("F:" + this.player.getFoodLevel());
+		// System.out.println("F:" + this.player.getFoodLevel());
 		if (this.player.getFoodLevel() <= 20) {
 		    this.player.setFoodLevel(this.player.getFoodLevel() + 1);
 		} else {

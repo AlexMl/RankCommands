@@ -33,12 +33,12 @@ public class PlayerListener implements Listener {
 	    Player eventPlayer = (Player) event.getEntity();
 	    
 	    if (VantiPermission.hasPermission(eventPlayer, VantiPermission.player_healt_regen)) {
-		System.out.println("Health: " + eventPlayer.getHealth());
-		System.out.println("Damage: " + event.getDamage());
-		System.out.println("FDamage: " + event.getFinalDamage());
+		// System.out.println("Health: " + eventPlayer.getHealth());
+		// System.out.println("Damage: " + event.getDamage());
+		// System.out.println("FDamage: " + event.getFinalDamage());
 		
 		double playerHealth = eventPlayer.getHealth() - event.getFinalDamage();
-		System.out.println("calcHealth: " + playerHealth);
+		// System.out.println("calcHealth: " + playerHealth);
 		
 		if (playerHealth > 0 && playerHealth <= RegenerationType.HEALTH.getStartValue()) {
 		    new Regenerator(eventPlayer, RegenerationType.HEALTH);
