@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerItemBreakEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 
 public class PlayerListener implements Listener {
@@ -49,8 +49,10 @@ public class PlayerListener implements Listener {
     }
     
     @EventHandler
-    public void onToolBreak(PlayerItemBreakEvent event) {
-	// dont break
+    public void onToolInteraction(PlayerInteractEvent event) {
+	if (VantiPermission.hasPermission(event.getPlayer(), VantiPermission.player_tool_repair)) {
+	    event.getItem().setDurability((short) 0);
+	}
     }
     
     @EventHandler
