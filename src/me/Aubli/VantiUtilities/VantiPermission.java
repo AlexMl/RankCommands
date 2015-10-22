@@ -5,7 +5,9 @@ import org.bukkit.command.CommandSender;
 
 public enum VantiPermission {
     
-    config_reload("vanti.reload"), ;
+    config_reload("vanti.reload"),
+    player_food_regen("vanti.regen.food"),
+    player_healt_regen("vanti.regen.health");
     
     private String permission;
     
