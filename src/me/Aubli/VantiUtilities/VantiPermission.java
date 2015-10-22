@@ -7,7 +7,8 @@ public enum VantiPermission {
     
     config_reload("vanti.reload"),
     player_food_regen("vanti.regen.food"),
-    player_healt_regen("vanti.regen.health");
+    player_healt_regen("vanti.regen.health"),
+    player_keep_inventory("vanti.keepinventory");
     
     private String permission;
     

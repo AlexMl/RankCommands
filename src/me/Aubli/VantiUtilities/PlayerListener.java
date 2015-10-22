@@ -9,7 +9,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
 
 
 public class PlayerListener implements Listener {
@@ -56,12 +55,10 @@ public class PlayerListener implements Listener {
     
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-	
+	if (VantiPermission.hasPermission(event.getEntity(), VantiPermission.player_keep_inventory)) {
+	    event.setKeepInventory(true);
+	} else {
+	    event.setKeepInventory(false);
+	}
     }
-    
-    @EventHandler
-    public void onPlayerRespawn(PlayerRespawnEvent event) {
-	
-    }
-    
 }
