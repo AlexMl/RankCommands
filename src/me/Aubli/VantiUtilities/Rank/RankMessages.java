@@ -8,6 +8,7 @@ import java.util.UUID;
 import me.Aubli.VantiUtilities.VantiUtilities;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
@@ -19,10 +20,10 @@ public class RankMessages {
     
     public enum RankMessage {
 	
-	rank_changed("You moved %s to rank %s!"),
-	rank_not_found("The rank %s is not available!"),
-	config_reloaded("Reloaded the plugin configuration!"),
-	no_permission("You do not have enough permission!");
+	rank_changed(ChatColor.GREEN + "You moved " + ChatColor.GOLD + "%s" + ChatColor.GREEN + " to rank " + ChatColor.GOLD + "%s" + ChatColor.GREEN + "!"),
+	rank_not_found(ChatColor.RED + "The rank " + ChatColor.GOLD + "%s" + ChatColor.RED + " is not available!"),
+	config_reloaded(ChatColor.GREEN + "Plugin configuration reloaded!"),
+	no_permission(ChatColor.DARK_RED + "You do not have enough permission!");
 	
 	private String message;
 	
