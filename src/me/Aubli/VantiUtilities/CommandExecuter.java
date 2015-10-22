@@ -20,23 +20,28 @@ public class CommandExecuter implements CommandExecutor {
 	
 	if (cmd.getName().equalsIgnoreCase("rank")) {
 	    
-	    if (args.length == 2) {
-		OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
-		Rank rank = RankManager.getRank(args[1]);
-		
-		if (rank != null) {
-		    if (rank.getRankPermission() == null || rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
-			RankManager.execute(rank, argPlayer);
-			RankMessages.sendInstantMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
-			return true;
+	    if (VantiPermission.hasPermission(sender, VantiPermission.command_rank_change)) {
+		if (args.length == 2) {
+		    OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+		    Rank rank = RankManager.getRank(args[1]);
+		    
+		    if (rank != null) {
+			if (rank.getRankPermission() == null || rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
+			    RankManager.execute(rank, argPlayer);
+			    RankMessages.sendInstantMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
+			    return true;
+			} else {
+			    RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
+			    return true;
+			}
 		    } else {
-			RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
+			RankMessages.sendInstantMessage(sender, RankMessage.rank_not_found, args[1]);
 			return true;
 		    }
-		} else {
-		    RankMessages.sendInstantMessage(sender, RankMessage.rank_not_found, args[1]);
-		    return true;
 		}
+	    } else {
+		RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
+		return true;
 	    }
 	    return false;
 	}
@@ -44,7 +49,7 @@ public class CommandExecuter implements CommandExecutor {
 	if (cmd.getName().equalsIgnoreCase("vanti")) {
 	    
 	    if (args.length == 1) {
-		if (VantiPermission.hasPermission(sender, VantiPermission.config_reload)) {
+		if (VantiPermission.hasPermission(sender, VantiPermission.command_config_reload)) {
 		    if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
 			VantiUtilities.getInstance().reloadPluginConfig();
 			RankMessages.sendInstantMessage(sender, RankMessage.config_reloaded);;
@@ -55,10 +60,8 @@ public class CommandExecuter implements CommandExecutor {
 		    return true;
 		}
 	    }
-	    
-	    return true;
+	    return false;
 	}
-	
 	return false;
     }
 }
