@@ -27,14 +27,14 @@ public class CommandExecuter implements CommandExecutor {
 		if (rank != null) {
 		    if (rank.getRankPermission() == null || rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
 			RankManager.execute(rank, argPlayer);
-			RankMessages.sendMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
+			RankMessages.sendInstantMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
 			return true;
 		    } else {
-			RankMessages.sendMessage(sender, RankMessage.no_permission);
+			RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
 			return true;
 		    }
 		} else {
-		    RankMessages.sendMessage(sender, RankMessage.rank_not_found, args[1]);
+		    RankMessages.sendInstantMessage(sender, RankMessage.rank_not_found, args[1]);
 		    return true;
 		}
 	    }
@@ -47,11 +47,11 @@ public class CommandExecuter implements CommandExecutor {
 		if (VantiPermission.hasPermission(sender, VantiPermission.config_reload)) {
 		    if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
 			VantiUtilities.getInstance().reloadPluginConfig();
-			RankMessages.sendMessage(sender, RankMessage.config_reloaded);;
+			RankMessages.sendInstantMessage(sender, RankMessage.config_reloaded);;
 			return true;
 		    }
 		} else {
-		    RankMessages.sendMessage(sender, RankMessage.no_permission);
+		    RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
 		    return true;
 		}
 	    }

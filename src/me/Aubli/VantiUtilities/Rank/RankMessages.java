@@ -55,11 +55,11 @@ public class RankMessages {
 	MessageDelivery.sendMessage(player, message.getFormatedMessage(args));
     }
     
-    public static void sendMessage(CommandSender sender, RankMessage message) {
+    public static void sendInstantMessage(CommandSender sender, RankMessage message) {
 	MessageDelivery.sendMessage(sender, message.getMessage());
     }
     
-    public static void sendMessage(CommandSender sender, RankMessage message, Object... args) {
+    public static void sendInstantMessage(CommandSender sender, RankMessage message, Object... args) {
 	MessageDelivery.sendMessage(sender, message.getFormatedMessage(args));
     }
     
