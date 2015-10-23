@@ -12,3 +12,9 @@ commands:
     vanti:
         description: Vanti commands
         usage: /<command> reload
+    nightvision:
+        description: Toggles night vision
+        usage: |
+               /<command>
+               /<command> <player>
+        aliases: [nv]
