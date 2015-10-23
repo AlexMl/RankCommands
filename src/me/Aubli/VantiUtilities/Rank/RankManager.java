@@ -112,7 +112,7 @@ public class RankManager {
 	}
 	
 	RankMessages.sendMessage(player, rank.getMessage());
-	VantiUtilities.getPluginLogger().log(RankManager.class, Level.INFO, "Player " + player.getName() + " got moved to " + rank.getName() + " successfully!", true, true);
+	VantiUtilities.getPluginLogger().log(RankManager.class, Level.INFO, "Player " + player.getName() + " moved to '" + rank.getName() + "' successfully!", true, true);
     }
     
     public static class EconomyException extends Exception {
