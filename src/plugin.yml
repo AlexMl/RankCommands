@@ -2,7 +2,7 @@ name: VantiUtilities
 description: Utilities for Vanti Server
 author: Aubli
 depend: [Vault]
-version: 0.9
+version: 0.9.1
 
 main: me.Aubli.VantiUtilities.VantiUtilities
 
