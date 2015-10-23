@@ -1,7 +1,10 @@
 package me.Aubli.VantiUtilities;
 
+import java.util.logging.Level;
+
 import me.Aubli.VantiUtilities.Rank.Rank;
 import me.Aubli.VantiUtilities.Rank.RankManager;
+import me.Aubli.VantiUtilities.Rank.RankManager.EconomyException;
 import me.Aubli.VantiUtilities.Rank.RankMessages;
 import me.Aubli.VantiUtilities.Rank.RankMessages.RankMessage;
 
@@ -30,7 +33,15 @@ public class CommandExecuter implements CommandExecutor {
 		    
 		    if (rank != null) {
 			if (rank.getRankPermission() == null || rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
-			    RankManager.execute(rank, argPlayer);
+			    try {
+				RankManager.execute(rank, argPlayer);
+			    } catch (NullPointerException e) {
+				VantiUtilities.getPluginLogger().log(getClass(), Level.WARNING, "Error in executing rank! " + e.getMessage(), true, false, e);
+			    } catch (EconomyException e) {
+				RankMessages.sendInstantMessage(sender, RankMessage.not_enough_money, argPlayer.getName(), rank.getName());
+				VantiUtilities.getPluginLogger().log(getClass(), Level.INFO, "Economy answer: " + e.getMessage(), true, true, e);
+				return true;
+			    }
 			    RankMessages.sendInstantMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
 			    return true;
 			} else {

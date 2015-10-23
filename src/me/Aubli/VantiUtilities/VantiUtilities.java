@@ -5,7 +5,9 @@ import java.util.logging.Level;
 import me.Aubli.Util.Logger.PluginOutput;
 import me.Aubli.VantiUtilities.Rank.RankManager;
 import me.Aubli.VantiUtilities.Rank.RankMessages;
+import net.milkbowl.vault.economy.Economy;
 
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -13,6 +15,7 @@ public class VantiUtilities extends JavaPlugin {
     
     private static VantiUtilities instance;
     private static PluginOutput logger;
+    private static Economy econProvider;
     
     private boolean debugMode;
     private int logLevel;
@@ -29,6 +32,13 @@ public class VantiUtilities extends JavaPlugin {
 	loadPluginConfig();
 	
 	logger = new PluginOutput(getInstance(), this.debugMode, this.logLevel);
+	
+	econProvider = loadVault();
+	
+	if (econProvider == null) {
+	    getServer().getPluginManager().disablePlugin(this);
+	    return;
+	}
 	
 	new RankManager();
 	new RankMessages();
@@ -47,6 +57,29 @@ public class VantiUtilities extends JavaPlugin {
     
     public static PluginOutput getPluginLogger() {
 	return logger;
+    }
+    
+    public static Economy getEconomyProvider() {
+	return econProvider;
+    }
+    
+    private Economy loadVault() {
+	
+	if (getServer().getPluginManager().getPlugin("Vault") != null) {
+	    RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+	    
+	    if (economyProvider != null) {
+		getPluginLogger().log(this.getClass(), Level.INFO, "Successfully hooked into Vault economy!", false, false);
+		return economyProvider.getProvider();
+	    } else {
+		getPluginLogger().log(this.getClass(), Level.SEVERE, "Could not hook into Vault! Disabling plugin ...", false);
+		return null;
+	    }
+	} else {
+	    getPluginLogger().log(this.getClass(), Level.SEVERE, "Vault is not installed! Disabling plugin ...", false);
+	    return null;
+	}
+	
     }
     
     private void loadPluginConfig() {

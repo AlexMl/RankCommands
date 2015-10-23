@@ -22,6 +22,7 @@ public class RankMessages {
 	
 	rank_changed(ChatColor.GREEN + "You moved " + ChatColor.GOLD + "%s" + ChatColor.GREEN + " to rank " + ChatColor.GOLD + "%s" + ChatColor.GREEN + "!"),
 	rank_not_found(ChatColor.RED + "The rank " + ChatColor.GOLD + "%s" + ChatColor.RED + " is not available!"),
+	not_enough_money(ChatColor.RED + "The player " + ChatColor.GOLD + "%s" + ChatColor.RED + " can not afford the rank " + ChatColor.GOLD + "%s" + ChatColor.RED + "!"),
 	nightvision_enabled(ChatColor.GREEN + "Night vision enabled!"),
 	nightvision_disabled(ChatColor.RED + "Night vision disabled!"),
 	config_reloaded(ChatColor.GREEN + "Plugin configuration reloaded!"),
