@@ -7,18 +7,18 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class Regenerator extends BukkitRunnable {
     
     public enum RegenerationType {
-	HEALTH(3, 2),
-	FOOD(3, 6);
+	HEALTH(10, 10),
+	FOOD(10, 10);
 	
-	private int regenInterval;
+	private long regenInterval;
 	private int startValue;
 	
-	private RegenerationType(int interval, int start) {
+	private RegenerationType(long interval, int start) {
 	    this.regenInterval = interval;
 	    this.startValue = start;
 	}
 	
-	public int getRegenerationInterval() {
+	public long getRegenerationInterval() {
 	    return this.regenInterval;
 	}
 	
@@ -34,7 +34,7 @@ public class Regenerator extends BukkitRunnable {
 	this.player = player;
 	this.type = type;
 	
-	this.runTaskTimer(VantiUtilities.getInstance(), type.getRegenerationInterval() * 10L, type.getRegenerationInterval() * 10L);
+	this.runTaskTimer(VantiUtilities.getInstance(), type.getRegenerationInterval(), type.getRegenerationInterval());
     }
     
     @Override
