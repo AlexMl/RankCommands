@@ -7,6 +7,7 @@ import java.util.UUID;
 import me.Aubli.VantiUtilities.Regenerator.RegenerationType;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -61,7 +62,9 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onToolInteraction(PlayerInteractEvent event) {
 	if (VantiPermission.hasPermission(event.getPlayer(), VantiPermission.player_tool_repair)) {
-	    event.getItem().setDurability((short) 0);
+	    if (event.getItem() != null && event.getItem().getType() != Material.AIR) {
+		event.getItem().setDurability((short) 0);
+	    }
 	}
     }
     
