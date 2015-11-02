@@ -25,7 +25,7 @@ public class CommandExecuter implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 	
 	if (cmd.getName().equalsIgnoreCase("rank")) {
-	    if (VantiPermission.hasPermission(sender, VantiPermission.command_rank_change)) {
+	    if (VantiPermission.hasPermission(sender, VantiPermission.command_rank)) {
 		
 		if (args.length == 2) {
 		    OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);

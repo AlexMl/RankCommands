@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 public enum VantiPermission {
     
     command_config_reload("vanti.reload"),
-    command_rank_change("vanti.rank"),
+    command_rank("vanti.rank"),
     command_tag("vanti.tag"),
     player_nightvision("vanti.nightvision"),
     player_food_regen("vanti.regen.food"),
