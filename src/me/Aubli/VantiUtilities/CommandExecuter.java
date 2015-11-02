@@ -60,6 +60,38 @@ public class CommandExecuter implements CommandExecutor {
 	    return false;
 	}
 	
+	if (cmd.getName().equalsIgnoreCase("tag")) {
+	    if (VantiPermission.hasPermission(sender, VantiPermission.command_tag)) {
+		if (args.length == 3) {
+		    OfflinePlayer argPlayer = Bukkit.getOfflinePlayer(args[0]);
+		    Rank rank = RankManager.getRank(args[1]);
+		    
+		    if (rank != null) {
+			if (rank.getRankPermission() == null || rank.getRankPermission().isEmpty() || sender.hasPermission(rank.getRankPermission())) {
+			    try {
+				RankManager.execute(rank, argPlayer, args[2]);
+			    } catch (NullPointerException e) {
+				VantiUtilities.getPluginLogger().log(getClass(), Level.WARNING, "Error in executing rank! " + e.getMessage(), true, false, e);
+			    } catch (EconomyException e) {
+				RankMessages.sendInstantMessage(sender, RankMessage.not_enough_money, argPlayer.getName(), rank.getName());
+				VantiUtilities.getPluginLogger().log(getClass(), Level.INFO, "Economy answer: " + e.getMessage(), true, true, e);
+				return true;
+			    }
+			    RankMessages.sendInstantMessage(sender, RankMessage.rank_changed, argPlayer.getName(), rank.getName());
+			    return true;
+			}
+		    } else {
+			RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
+			return true;
+		    }
+		}
+	    } else {
+		RankMessages.sendInstantMessage(sender, RankMessage.no_permission);
+		return true;
+	    }
+	    return false;
+	}
+	
 	if (cmd.getName().equalsIgnoreCase("nightvision")) {
 	    if (VantiPermission.hasPermission(sender, VantiPermission.player_nightvision)) {
 		Player player = null;

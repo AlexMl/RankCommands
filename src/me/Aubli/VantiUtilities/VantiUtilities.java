@@ -43,6 +43,7 @@ public class VantiUtilities extends JavaPlugin {
 	new RankManager();
 	new RankMessages();
 	getCommand("rank").setExecutor(new CommandExecuter());
+	getCommand("tag").setExecutor(new CommandExecuter());
 	getCommand("vanti").setExecutor(new CommandExecuter());
 	getCommand("nightvision").setExecutor(new CommandExecuter());
 	

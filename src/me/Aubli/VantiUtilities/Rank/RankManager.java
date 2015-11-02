@@ -89,7 +89,10 @@ public class RankManager {
     }
     
     public static void execute(Rank rank, OfflinePlayer player) throws NullPointerException, EconomyException {
-	
+	execute(rank, player, "");
+    }
+    
+    public static void execute(Rank rank, OfflinePlayer player, String tag) throws NullPointerException, EconomyException {
 	if (rank == null || player == null) {
 	    throw new NullPointerException("Rank and Player can not be null!");
 	}
@@ -108,7 +111,7 @@ public class RankManager {
 	}
 	
 	for (String command : rank.getCommandList()) {
-	    VantiUtilities.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()));
+	    VantiUtilities.getInstance().getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replace("<player>", player.getName()).replace("<tag>", tag));
 	}
 	
 	RankMessages.sendMessage(player, rank.getMessage());

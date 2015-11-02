@@ -10,6 +10,9 @@ commands:
     rank:
         description: Rank command
         usage: /<command> <player> <rank>
+    tag:
+        description: Execude ranks with <tag> support
+        usage: /<command> <player> <rank> <tag>
     vanti:
         description: Vanti commands
         usage: /<command> reload
