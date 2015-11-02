@@ -39,7 +39,7 @@ public class RankManager {
 	    try {
 		rankFile.createNewFile();
 		
-		fileConfig.options().header("This is the rank configuration of " + VantiUtilities.getInstance().getName() + "!\nUse '<player>' for addressing the player\nAvailable options are:\n'permission:' Permission to execute /rank rankname player\n'commands:' the commands in list format\n'message:' the message send to the player who received the rank\n'cost:' the cost the receiver has to pay\n");
+		fileConfig.options().header("This is the rank configuration of " + VantiUtilities.getInstance().getName() + "!\nUse '<player>' to address the player and '<tag>' for additional command arguments\nAvailable options are:\n'permission:' Permission to execute /rank rankname player\n'commands:' the commands in list format\n'message:' the message send to the player who received the rank\n'cost:' the cost the receiver has to pay\n");
 		fileConfig.set("ranks", "[]");
 		
 		fileConfig.options().copyHeader();
